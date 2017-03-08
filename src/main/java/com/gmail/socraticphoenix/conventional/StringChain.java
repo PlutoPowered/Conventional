@@ -33,7 +33,7 @@ import java.util.stream.Stream;
 
 /**
  * This class provides a convenient builder-syntac for constructing a unique and informational string to represent an
- * object/ This class uses a {@code seen} list to check already processed values, and accesses the methods from the
+ * object. This class uses a {@code seen} list to check already processed values, and accesses the methods from the
  * {@link Stringable} interface to propogate the list. The list ensures cyclic references are handled properly in arrays
  * and {@link Stringable} values. The chain works by holding a StringBuilder and creating an indented, multiline string.
  * When all values are processed, the result is returned through the {@link StringChain#finish()} method. It should be
