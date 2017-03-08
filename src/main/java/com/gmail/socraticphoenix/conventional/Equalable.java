@@ -51,6 +51,17 @@ public interface Equalable {
     boolean equals(Object other, Map<Object, Pair<Object, AtomicReference<Boolean>>> seen);
 
     /**
+     * This method invokes {@code super.equals(other, seen)} if this class's superclass implements {@link Equalable},
+     * and {@code super.equals(other)} if it is not.
+     *
+     * @param other The object to compare against
+     * @param seen The seen map used by the {@link EqualityChain}
+     *
+     * @return if {@code super} equals {@code other}
+     */
+    boolean superEquals(Object other, Map<Object, Pair<Object, AtomicReference<Boolean>>> seen);
+
+    /**
      * The equals method. This method should delegate to {@link Equalable#equals(Object, Map)} by creating a new {@link
      * IdentityHashMap} and passing on {@code other} and the new map
      *

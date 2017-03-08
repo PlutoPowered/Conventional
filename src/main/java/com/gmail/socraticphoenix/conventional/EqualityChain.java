@@ -124,11 +124,29 @@ public class EqualityChain {
         if (a == b) {
             this.result = true;
             this.skip = true;
-        } else if (!a.getClass().isInstance(b)) {
+        } else if (a == null || b == null) {
+            this.result = false;
+            this.skip = true;
+        } else if (a.getClass() != b.getClass()) {
             this.result = false;
             this.skip = true;
         }
 
+        return this;
+    }
+
+    /**
+     * Includes {@code a.superEquals(b)}
+     *
+     * @param a The object handling the {@code equals} method
+     * @param b The argument of the {@code equals} method
+     *
+     * @return this
+     */
+    public EqualityChain $super(Equalable a, Equalable b) {
+        if (this.result && !this.skip) {
+            this.include(a.superEquals(b, this.seen));
+        }
         return this;
     }
 

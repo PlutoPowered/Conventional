@@ -75,6 +75,19 @@ public class HashChain {
     }
 
     /**
+     * Includes {@code a.superHashCode()}
+     *
+     * @param a The object handling the {@code hashCode} method
+     *
+     * @return this
+     *
+     * @see HashChain#include(int)
+     */
+    public HashChain $super(Hashable a) {
+        return this.include(a.superHashCode(this.seen));
+    }
+
+    /**
      * Includes 0 if {@code val} is true, 1 otherwise
      *
      * @param val The value to include
@@ -489,7 +502,8 @@ public class HashChain {
      * contextual data is held in the class, only the currently calculated value is used to determine the result of
      * hashCode and equals
      *
-     * @param  other The object to compare against
+     * @param other The object to compare against
+     *
      * @return true if {@code this.result == other.result}, false otherwise
      */
     public boolean equals(Object other) {

@@ -45,6 +45,7 @@ public interface Hashable {
      */
     int hashCode(Map<Object, AtomicInteger> seen);
 
+
     /**
      * The hashCode method. This method should delegate to {@link Hashable#hashCode(Map)} by creating a new {@link
      * IdentityHashMap} and passing it on
@@ -56,5 +57,15 @@ public interface Hashable {
      */
     @Override
     int hashCode();
+
+    /**
+     * This method invokes {code super.hashCode(seen)} if this class's superclass implements {@link Hashable}, and {@code
+     * super.hashCode()} if it is not
+     *
+     * @param seen The seen map used by the {@link HashChain}
+     *
+     * @return {@code super}'s hashcode
+     */
+    int superHashCode(Map<Object, AtomicInteger> seen);
 
 }
